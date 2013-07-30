@@ -40,7 +40,7 @@ QList<IMAPEmail*> IMAPFolder::getEmails(int start, int end) {
     start = count - (end - initialStart) - initialStart + 1;
     end = count - initialStart;
     QString tag = IMAPTag::getNextTag();
-    QString command = QString("%1 FETCH %2:%3 (FLAGS BODY.PEEK[HEADER.FIELDS (FROM SUBJECT DATE)])\r\n").arg(tag, QString::number(start), QString::number(end));
+    QString command = QString("%1 FETCH %2:%3 (FLAGS BODY.PEEK[HEADER.FIELDS (FROM SUBJECT DATE CONTENT-TYPE)])\r\n").arg(tag, QString::number(start), QString::number(end));
     m_connection->send(command);
     QByteArray response;
     m_connection->read(tag, response);

@@ -33,6 +33,11 @@ void FolderTreeWidget::addFolderChildren(FolderTreeItem* parent, QList<IMAPFolde
             QIcon icon("://trash.png");
             item->setIcon(0, icon);
         }
+        else
+        {
+            QIcon icon("://folder_closed.png");
+            item->setIcon(0, icon);
+        }
         if (folders[i]->hasChildren()) {
             QList<IMAPFolder*> children = folders[i]->getChildren();
             addFolderChildren(item, children);

@@ -2,8 +2,9 @@
 #include "IMAPTag.h"
 #include "MIMEParser.h"
 
-IMAPEmail::IMAPEmail(QString id, QString from, QString subject, QDateTime date, IMAPConnection* connection) {
+IMAPEmail::IMAPEmail(QString id, QString ct, QString from, QString subject, QDateTime date, IMAPConnection* connection) {
     m_id = id;
+    m_contenttype = ct;
     m_from = m_parser->parseEmailAddress(from);
     m_subject = subject;
     m_connection = connection;
@@ -18,7 +19,17 @@ IMAPEmail::~IMAPEmail() {
         delete m_attachments[i];
     }
 }
-
+bool IMAPEmail::hasAttachments()
+{
+    if(m_contenttype.contains("multipart", Qt::CaseInsensitive))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 EmailAddress IMAPEmail::getTo() {
     loadHeaderValues();
     return m_to;
