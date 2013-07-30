@@ -1,14 +1,15 @@
 #include "ComposeWindow.h"
-
-ComposeWindow::ComposeWindow(QWidget *parent, Qt::WindowFlags flags) :
+#include "IMAP/IMAPClient.h"
+ComposeWindow::ComposeWindow(IMAPClient* client, QWidget *parent, Qt::WindowFlags flags) :
     QDialog(parent, flags)
 {
+    m_client = client;
     createUI();
     setConnections();
 }
 
 void ComposeWindow::createUI() {
-    m_emailReplyWidget = new EmailReplyWidget(this);
+    m_emailReplyWidget = new EmailReplyWidget(m_client, this);
     m_emailReplyWidget->setMinimumSize(QSize(800, 600));
     setModal(true);
 }

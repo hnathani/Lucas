@@ -19,7 +19,7 @@
     border-top: 1px solid #A9B7C9;
 }
 
-EmailTableWidget::item:selected {
+.EmailTableWidget::item:selected {
     background-color: #CEE3FD;
     border-top: 1px solid #7DA2CE;
     border-bottom: 1px solid #7DA2CE;
@@ -39,7 +39,12 @@ EmailTableWidget::item:selected {
     background-color: #FFFFFF;
 }
 
+.EmailViewWidget QTextEdit {
+    border: none;
+}
+
 .EmailReplyWidget  {
+    border-top: none;
     border-right: 1px solid #A9B7C9;
     border-bottom: 1px solid #A9B7C9;
     background-color: #F8F8F8;

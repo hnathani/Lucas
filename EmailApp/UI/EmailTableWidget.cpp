@@ -23,7 +23,7 @@ void EmailTableWidget::folderSelect(IMAPFolder* folder) {
 void EmailTableWidget::initializeSettings() {
     setSelectionBehavior(QAbstractItemView::SelectRows);
     setSelectionMode(QAbstractItemView::ContiguousSelection);
-    setColumnCount(3);
+    setColumnCount(4);
     verticalHeader()->hide();
     horizontalHeader()->resizeSections(QHeaderView::Interactive);
     setShowGrid(false);
@@ -33,8 +33,12 @@ void EmailTableWidget::initializeSettings() {
 
 void EmailTableWidget::createLabels() {
     QStringList list;
-    list << "Subject" << "From" << "Date";
+    list << "" << "Subject" << "From" << "Date";
     setHorizontalHeaderLabels(list);
+    EmailTableItem* item = new EmailTableItem(NULL);
+    QIcon icon("://attachment_32.png");
+    item->setIcon(icon);
+    setHorizontalHeaderItem(0, item);
 }
 
 void EmailTableWidget::nextPage() {
@@ -78,25 +82,30 @@ void EmailTableWidget::setEmails(QList<IMAPEmail*> emails, int total) {
     this->clearContents();
     this->setRowCount(emails.size());
     for (int i = 0; i < emails.size(); i++) {
+
         EmailTableItem* item = new EmailTableItem(emails[i]);
-        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
-        item->setText(emails[i]->getSubject());
-        this->setItem(i, 0, item);
-
-        item = new EmailTableItem(NULL);
-        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
-        item->setText(emails[i]->getFrom().getName());
-        this->setItem(i, 1, item);
-
-        item = new EmailTableItem(NULL);
-        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
-        item->setText(emails[i]->getDate().toString());
-        this->setItem(i, 2, item);
         if(emails[i]->hasAttachments())
         {
             QIcon icon("://attachment_32.png");
             item->setIcon(icon);
         }
+        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
+        this->setItem(i, 0, item);
+
+        item = new EmailTableItem(NULL);
+        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
+        item->setText(emails[i]->getSubject());
+        this->setItem(i, 1, item);
+
+        item = new EmailTableItem(NULL);
+        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
+        item->setText(emails[i]->getFrom().getName());
+        this->setItem(i, 2, item);
+
+        item = new EmailTableItem(NULL);
+        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
+        item->setText(emails[i]->getDate().toString());
+        this->setItem(i, 3, item);
     }
     horizontalHeader()->resizeSections(QHeaderView::ResizeToContents);
     horizontalHeader()->setStretchLastSection(true);

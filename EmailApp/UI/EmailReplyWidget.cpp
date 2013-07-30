@@ -3,9 +3,10 @@
 #include <QFileDialog>
 #include "SMTP/SmtpMime"
 
-EmailReplyWidget::EmailReplyWidget(QWidget *parent) :
+EmailReplyWidget::EmailReplyWidget(IMAPClient* client, QWidget *parent) :
     QFrame(parent)
 {
+    m_client = client;
     createUI();
     setConnections();
     reset();
@@ -179,12 +180,14 @@ void EmailReplyWidget::attachmentRemoved(AttachmentOpenDisplay* attachment) {
 }
 
 void EmailReplyWidget::send() {
-    SmtpClient client("smtp.gmail.com", 465, SmtpClient::SslConnection);
-    client.setUser("lucas.cmpt212@gmail.com");
-    client.setPassword("1lucas23");
+    User user = m_client->getUser();
+    EmailProvider provider = user.getProvider();
+    SmtpClient client(provider.getSMTPAddress(), provider.getSMTPPort(), SmtpClient::SslConnection);
+    client.setUser(user.getUsername());
+    client.setPassword(user.getPassword());
 
     MimeMessage message;
-    message.setSender(new EmailAddress("lucas.cmpt212@gmail.com", "You"));
+    message.setSender(new EmailAddress(user.getUsername(), user.getName()));
 
     QList<QString> to = m_to->getEmails();
     for (int i = 0; i < to.size(); i++) {

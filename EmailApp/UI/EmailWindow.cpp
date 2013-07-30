@@ -36,10 +36,10 @@ void EmailWindow::createUI() {
     m_emailViewWidget = new EmailViewWidget(m_centralWidget);
     emailLayout->addWidget(m_emailViewWidget, 5);
 
-    m_emailReplyWidget = new EmailReplyWidget(m_centralWidget);
+    m_emailReplyWidget = new EmailReplyWidget(&m_client, m_centralWidget);
     emailLayout->addWidget(m_emailReplyWidget, 5);
 
-    m_composeWindow = new ComposeWindow(this, Qt::Window );
+    m_composeWindow = new ComposeWindow(&m_client, this, Qt::Window );
     m_composeWindow->hide();
 
     m_loginWindow = new LoginWindow(&m_client, this);
@@ -69,6 +69,10 @@ void EmailWindow::setupConnections() {
     connect(m_navigationWidget, SIGNAL(composeClicked()), m_composeWindow, SLOT(display()));
 
     connect(m_loginWindow, SIGNAL(loginSuccessful()), SLOT(userLoggedIn()));
+
+    connect(m_navigationWidget, SIGNAL(searchClicked(QString)), m_emailViewWidget, SLOT(clearAndHide()));
+    connect(m_navigationWidget, SIGNAL(searchClicked(QString)), m_emailReplyWidget, SLOT(reset()));
+    connect(m_navigationWidget, SIGNAL(searchClicked(QString)), m_emailHeaderWidget, SLOT(clearAndHide()));
 }
 
 void EmailWindow::userLoggedIn() {

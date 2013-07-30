@@ -83,6 +83,7 @@ IMAPEmail* IMAPParser::parseEmail(QString data, IMAPConnection& connection, IMAP
             dateStrings.removeFirst();
             QString datestr = dateStrings.join(":").trimmed();
             datestr = datestr.split("-")[0].trimmed();
+            datestr = datestr.split("+")[0].trimmed();
             dt = QDateTime::fromString(datestr, "ddd, dd MMM yyyy HH:mm:ss");
         }
     }

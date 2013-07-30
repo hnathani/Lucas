@@ -9,6 +9,7 @@
 #include "EmailTextBox.h"
 #include "IMAP/IMAPEmail.h"
 #include "AttachmentOpenDisplay.h"
+#include "IMAP/IMAPClient.h"
 
 enum SendType {
     COMPOSE,
@@ -20,7 +21,7 @@ class EmailReplyWidget : public QFrame
 {
     Q_OBJECT
 public:
-    explicit EmailReplyWidget(QWidget *parent = 0);
+    explicit EmailReplyWidget(IMAPClient* client, QWidget *parent = 0);
     
 
 signals:
@@ -55,6 +56,7 @@ private:
     QHBoxLayout* m_attachmentLayout;
     IMAPEmail* m_currentEmail;
     SendType m_currentMode;
+    IMAPClient* m_client;
 
     void createUI();
     void setConnections();
