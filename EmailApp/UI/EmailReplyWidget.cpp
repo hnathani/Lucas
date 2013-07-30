@@ -82,6 +82,7 @@ void EmailReplyWidget::setConnections() {
     connect(m_submit, SIGNAL(clicked()) , SLOT(send()) );
     connect(m_submit, SIGNAL(clicked()), SIGNAL(submitPressed()));
     connect(m_close, SIGNAL(clicked()), SIGNAL(closePressed()));
+    connect(m_close, SIGNAL(clicked()), SLOT(reset()));
 }
 
 void EmailReplyWidget::showCC() {
