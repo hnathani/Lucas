@@ -22,13 +22,13 @@ void LoginWindow::createUI() {
     m_passwordLabel = new QLabel("Password", this);
     m_passwordInput = new QLineEdit("1lucas23", this);
     m_passwordInput->setEchoMode(QLineEdit::Password);
-    m_providers = new QButtonGroup(this);
-    m_gmail = new QRadioButton("Gmail", this);
-    m_gmail->setChecked(true);
-    m_yahoo = new QRadioButton("Yahoo", this);
-    m_providers->addButton(m_gmail);
-    m_providers->addButton(m_yahoo);
-    m_providers->setExclusive(true);
+    //m_providers = new QButtonGroup(this);
+    //m_gmail = new QRadioButton("Gmail", this);
+    //m_gmail->setChecked(true);
+    //m_yahoo = new QRadioButton("Yahoo", this);
+    //m_providers->addButton(m_gmail);
+    //m_providers->addButton(m_yahoo);
+    //m_providers->setExclusive(true);
 
     QHBoxLayout* submitLayout = new QHBoxLayout();
     m_loginButton = new QPushButton("Login", this);
@@ -44,8 +44,8 @@ void LoginWindow::createUI() {
     layout->addWidget(m_usernameInput, 1, 1);
     layout->addWidget(m_passwordLabel, 2, 0);
     layout->addWidget(m_passwordInput, 2, 1);
-    layout->addWidget(m_gmail, 3, 0);
-    layout->addWidget(m_yahoo, 4, 0);
+    //layout->addWidget(m_gmail, 3, 0);
+    //layout->addWidget(m_yahoo, 4, 0);
     layout->addLayout(submitLayout, 5, 1);
     layout->addWidget(m_error, 6, 0);
 
@@ -65,9 +65,9 @@ void LoginWindow::login() {
     QString password = m_passwordInput->text();
 
     EmailProvider provider = GmailProvider();
-    if (m_yahoo->isChecked()) {
-        provider = YahooProvider();
-    }
+    //if (m_yahoo->isChecked()) {
+    //    provider = YahooProvider();
+    //}
 
     User user(name, username, password, provider);
     IMAPConnection::Status status = m_client->connectToHost(user);
