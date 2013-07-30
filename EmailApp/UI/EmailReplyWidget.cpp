@@ -147,6 +147,7 @@ void EmailReplyWidget::reset() {
     m_cc->reset();
     m_bcc->reset();
     m_replyBox->clear();
+    m_subject->clear();
 
     for (int i = 0; i < m_attachments.size(); i++) {
         AttachmentOpenDisplay* attachment = m_attachments[i];

@@ -45,6 +45,7 @@ void EmailWindow::createUI() {
     m_loginWindow = new LoginWindow(&m_client, this);
 
     setupConnections();
+    showMaximized();
     m_loginWindow->show();
 }
 
@@ -76,6 +77,5 @@ void EmailWindow::setupConnections() {
 }
 
 void EmailWindow::userLoggedIn() {
-    this->showMaximized();
     m_folderTreeWidget->loadFolders(&m_client);
 }

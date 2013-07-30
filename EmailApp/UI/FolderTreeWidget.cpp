@@ -16,6 +16,7 @@ void FolderTreeWidget::onItemClick(QTreeWidgetItem *item) {
 
 void FolderTreeWidget::initializeSettings() {
     this->header()->hide();
+    setAttribute(Qt::WA_MacShowFocusRect, 0);
 }
 
 void FolderTreeWidget::addFolderChildren(FolderTreeItem* parent, QList<IMAPFolder*>& folders) {

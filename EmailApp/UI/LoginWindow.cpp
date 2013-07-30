@@ -52,6 +52,8 @@ void LoginWindow::createUI() {
     setMinimumWidth(400);
     setMinimumHeight(250);
     setModal(true);
+
+    m_yahoo->hide();
 }
 
 void LoginWindow::setConnections() {
