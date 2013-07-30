@@ -6,6 +6,7 @@
 #include "IMAPFolder.h"
 #include "User.h"
 
+class IMAPFolder;
 class IMAPClient {
 
 public:
@@ -17,12 +18,13 @@ public:
     void createFolder(QString name); // Creates a folder on IMAP server
     void deleteFolder(QString name); // Delete the specified folder off the IMAP server
     User getUser();
-
+    void setSelectedFolder(IMAPFolder* folder);
 private:
     QList<IMAPFolder*> getFolders(QString name);
     IMAPConnection m_connection;
     IMAPParser m_parser;
     User m_user;
+    IMAPFolder* m_selectedFolder;
     void createDefaultFolders();
 
 

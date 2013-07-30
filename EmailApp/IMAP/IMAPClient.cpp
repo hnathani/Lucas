@@ -32,7 +32,7 @@ QList<IMAPFolder*> IMAPClient::getFolders(QString name) {
     m_connection.send(command);
     QByteArray response;
     m_connection.read(tag, response);
-    QList<IMAPFolder*> folders = m_parser.parseFolders(QString(response), m_connection);
+    QList<IMAPFolder*> folders = m_parser.parseFolders(QString(response), m_connection, this);
 
     for (int i = 0; i < folders.size(); i++) {
         if (folders[i]->hasChildren()) {
@@ -65,4 +65,8 @@ void IMAPClient::deleteFolder(QString name) {
 
 User IMAPClient::getUser() {
     return m_user;
+}
+
+void IMAPClient::setSelectedFolder(IMAPFolder* folder) {
+    m_selectedFolder = folder;
 }

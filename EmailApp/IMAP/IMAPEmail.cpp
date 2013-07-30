@@ -21,14 +21,7 @@ IMAPEmail::~IMAPEmail() {
 }
 bool IMAPEmail::hasAttachments()
 {
-    if(m_contenttype.contains("multipart", Qt::CaseInsensitive))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return m_hasAttachments;
 }
 EmailAddress IMAPEmail::getTo() {
     loadHeaderValues();
@@ -67,6 +60,10 @@ QList<IMAPAttachment*> IMAPEmail::getAttachments() {
     return m_attachments;
 }
 
+void IMAPEmail::setHasAttachments(bool value) {
+    m_hasAttachments = value;
+}
+
 QString IMAPEmail::getHTML() {
     loadEmail();
     return m_html;
@@ -100,7 +97,6 @@ void IMAPEmail::loadHeaderValues() {
 
 void IMAPEmail::loadEmail() {
     if (!m_haveEmail) {
-        m_parent->selectFolder();
         QString tag = IMAPTag::getNextTag();
         QString command = QString("%1 FETCH %2 BODY[TEXT]\r\n").arg(tag, m_id);
         m_connection->send(command);
@@ -140,7 +136,7 @@ bool IMAPEmail::isRead() {
 
 void IMAPEmail::markRead() {
     if (m_read == false) {
-        m_parent->selectFolder();
+        //m_parent->selectFolder();
         QString tag = IMAPTag::getNextTag();
         QString command = QString("%1 STORE %2 +FLAGS (\\Seen)\r\n").arg(tag, m_id);
         m_connection->send(command);
@@ -154,7 +150,6 @@ void IMAPEmail::markRead() {
 
 void IMAPEmail::markUnread() {
     if (m_read == true) {
-        m_parent->selectFolder();
         QString tag = IMAPTag::getNextTag();
         QString command = QString("%1 STORE %2 -FLAGS (\\Seen)\r\n").arg(tag, m_id);
         m_connection->send(command);
@@ -167,7 +162,6 @@ void IMAPEmail::markUnread() {
 }
 
 void IMAPEmail::move(QString folder) {
-    m_parent->selectFolder();
     QString tag = IMAPTag::getNextTag();
     QString command = QString("%1 COPY %2 %3\r\n").arg(tag, m_id, folder);
     m_connection->send(command);
