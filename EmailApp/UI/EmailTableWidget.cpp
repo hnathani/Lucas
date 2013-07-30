@@ -109,6 +109,7 @@ void EmailTableWidget::setEmails(QList<IMAPEmail*> emails, int total) {
         this->setItem(i, 3, item);
     }
     horizontalHeader()->resizeSections(QHeaderView::ResizeToContents);
+    horizontalHeader()->setStretchLastSection(true);
 
     int start = m_currentPage * numberOfEmailsDisplayed;
     emit emailPageSelected(start, start + emails.size(), total);
