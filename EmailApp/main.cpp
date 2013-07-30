@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
         file.close();
     }
     EmailWindow w;
-    w.show();
+    //w.show();
     return a.exec();
 
 }

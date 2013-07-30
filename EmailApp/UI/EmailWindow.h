@@ -40,6 +40,7 @@ signals:
 public slots:
     void userLoggedIn();
 
+
 };
 
 #endif // EMAILWINDOW_H

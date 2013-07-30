@@ -99,7 +99,8 @@ HEADERS  += \
     UI/ComposeWindow.h \
     UI/LoginWindow.h
 
-FORMS    +=
+FORMS    += \
+    UI/newmessage.ui
 
 OTHER_FILES += \
     SMTP/README.txt \
