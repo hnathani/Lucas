@@ -3,6 +3,7 @@
 # Project created by QtCreator 2013-06-25T15:05:19
 #
 #-------------------------------------------------
+QMAKE_CXXFLAGS += -O3
 
 QT       += core gui network webkit webkitwidgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

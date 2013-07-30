@@ -204,12 +204,12 @@ void EmailReplyWidget::send() {
 
     QList<QString> cc = m_cc->getEmails();
     for (int i = 0; i < cc.size(); i++) {
-        message.addCc(new EmailAddress(to[i]));
+        message.addCc(new EmailAddress(cc[i]));
     }
 
     QList<QString> bcc = m_bcc->getEmails();
     for (int i = 0; i < bcc.size(); i++) {
-        message.addBcc(new EmailAddress(to[i]));
+        message.addBcc(new EmailAddress(bcc[i]));
     }
     QString subject;
     QString content = m_replyBox->toPlainText();

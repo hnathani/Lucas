@@ -82,7 +82,7 @@ void EmailHeaderWidget::createUI() {
     left->addWidget(m_to, 2, 0);
     left->addWidget(m_toValue, 2, 1);
     left->addWidget(m_cc, 3, 0);
-    left->addWidget(m_cc, 3, 1);
+    left->addWidget(m_ccValue, 3, 1);
 
 
     QVBoxLayout* right = new QVBoxLayout();
