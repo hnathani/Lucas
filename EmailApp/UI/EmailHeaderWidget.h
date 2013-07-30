@@ -8,6 +8,12 @@
 #include "AttachmentEnclosedDisplay.h"
 #include <QHBoxLayout>
 
+/**
+ * @brief The EmailHeaderWidget class
+ *  Sets the header of an email depending on whether the reply, reply-all, forward
+ *  or delete buttons are pressed.
+ */
+
 class EmailHeaderWidget : public QFrame
 {
     Q_OBJECT

@@ -3,6 +3,12 @@
 
 #include "MimePart.h"
 
+/**
+ * @brief The MimeText class
+ *  Represents the text part of the message body
+ *  Adapted from: https://github.com/keelerm84/SupportMessage
+ */
+
 class MimeText : public MimePart
 {
 public:

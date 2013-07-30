@@ -11,6 +11,14 @@
 #include "User.h"
 #include "IMAP/IMAPClient.h"
 
+/**
+ * @brief The LoginWindow class
+ *
+ *  Initial login window the user uses to authenticate themself
+ *  to their Gmail account.
+ */
+
+
 class LoginWindow : public QDialog
 {
     Q_OBJECT

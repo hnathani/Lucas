@@ -15,7 +15,6 @@ ReplyMessage::ReplyMessage() :
 
 ReplyMessage::~ReplyMessage()
 {
-    //delete ui;
 }
 /*
  *  Sets to, body and subject fields to those appropriate for

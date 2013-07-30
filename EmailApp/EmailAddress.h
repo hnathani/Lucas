@@ -3,6 +3,12 @@
 
 #include <QObject>
 
+/**
+ * @brief The EmailAddress class
+ *  Class that creates objects that consist of a user's name and email
+ *  address
+ */
+
 class EmailAddress
 {
 public:

@@ -4,7 +4,11 @@
 #include <QWidget>
 #include "IMAP/IMAPAttachment.h"
 #include <QPushButton>
-
+/**
+ * @brief The AttachmentEnclosedDisplay class
+ *  Button to click on received email to open attachment.
+ *
+ */
 class AttachmentEnclosedDisplay : public QWidget
 {
     Q_OBJECT

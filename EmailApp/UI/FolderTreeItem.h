@@ -4,6 +4,13 @@
 #include <QTreeWidgetItem>
 #include "IMAP/IMAPFolder.h"
 
+/**
+ * @brief The FolderTreeItem class
+ *
+ *  Subclassed QWidgetItem created so that our FolderTreeItems
+ *  can be IMAPFolders.
+ */
+
 class FolderTreeItem : public QTreeWidgetItem {
 
 public:

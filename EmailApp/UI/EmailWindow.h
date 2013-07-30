@@ -13,6 +13,12 @@
 #include "ComposeWindow.h"
 #include "LoginWindow.h"
 
+/**
+ * @brief The EmailWindow class
+ *  Subclass of QMainWindow that acts as the main window.
+ *  Holds all the UI elements together, and sets up signals and slots for each UI element.
+ */
+
 class EmailWindow : public QMainWindow
 {
     Q_OBJECT

@@ -16,7 +16,12 @@ enum SendType {
     FORWARD,
     REPLY
 };
-
+/**
+ * @brief The EmailReplyWidget class
+ *
+ *  Creates the UI for composition of messages, either a new, reply or forward message.
+ *  Send button signals a new SMTP client message to send.
+ */
 class EmailReplyWidget : public QFrame
 {
     Q_OBJECT

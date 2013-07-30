@@ -6,7 +6,12 @@
 namespace Ui {
 class NewMessage;
 }
-
+/**
+ * @brief The NewMessage class
+ *
+ *  Class that creates a new email message, that holds the body, subject, to, etc. details
+ *  that are needed for a new email.
+ */
 class NewMessage : public QDialog
 {
     Q_OBJECT

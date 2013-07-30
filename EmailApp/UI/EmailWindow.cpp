@@ -43,6 +43,9 @@ void EmailWindow::createUI() {
     m_composeWindow->hide();
 
     m_loginWindow = new LoginWindow(&m_client, this);
+    m_loginWindow->setWindowTitle("Mailab - Lucas");
+    QIcon icon("://letter.png");
+    m_loginWindow->setWindowIcon(icon);
 
     setupConnections();
     showMaximized();

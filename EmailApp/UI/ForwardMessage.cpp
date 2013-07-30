@@ -15,7 +15,6 @@ ForwardMessage::ForwardMessage() :
 
 ForwardMessage::~ForwardMessage()
 {
-    //delete ui;
 }
 /*
  *  Sets to, body and subject fields to those appropriate for

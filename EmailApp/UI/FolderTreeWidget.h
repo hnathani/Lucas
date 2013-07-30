@@ -6,6 +6,13 @@
 #include "IMAP/IMAPFolder.h"
 #include "IMAP/IMAPClient.h"
 
+/**
+ * @brief The FolderTreeWidget class
+ *
+ *  Subclassed QTreeWidget designed to hold FolderTreeWidgetItems (IMAPFolders)
+ *  as items.
+ */
+
 class FolderTreeWidget : public QTreeWidget {
 
 Q_OBJECT

@@ -6,6 +6,13 @@
 #include "EmailAddress.h"
 #include <QList>
 
+/**
+ * @brief The MimeMessage class
+ *  Represents the mime data of a mime message.
+ *
+ *  Adapted from: https://github.com/keelerm84/SupportMessage
+ */
+
 class MimeMessage : public QObject
 {
 public:

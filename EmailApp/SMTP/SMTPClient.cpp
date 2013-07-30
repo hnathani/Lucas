@@ -162,8 +162,8 @@ bool SmtpClient::connectToHost()
     // Tries to connect to server
     if (!socket->waitForConnected(connectionTimeout))
     {
-        qDebug() << host;
-        qDebug() << ((QSslSocket*) socket)->errorString();
+        //qDebug() << host;
+        //qDebug() << ((QSslSocket*) socket)->errorString();
         emit smtpError(ConnectionTimeoutError);
 
         return false;
@@ -211,7 +211,7 @@ bool SmtpClient::connectToHost()
             ((QSslSocket*) socket)->startClientEncryption();
 
             if (!((QSslSocket*) socket)->waitForEncrypted(connectionTimeout)) {
-                qDebug() << ((QSslSocket*) socket)->errorString();
+                //qDebug() << ((QSslSocket*) socket)->errorString();
                 emit smtpError(ConnectionTimeoutError);
                 return false;
             }
@@ -361,7 +361,7 @@ bool SmtpClient::sendMail(MimeMessage& email)
     }
     catch (ResponseTimeoutException)
     {
-        qDebug() << responseCode;
+        //qDebug() << responseCode;
         return false;
     }
 

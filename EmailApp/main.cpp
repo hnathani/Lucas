@@ -14,6 +14,9 @@ int main(int argc, char *argv[])
         file.close();
     }
     EmailWindow w;
+    w.setWindowTitle("Mailab - Lucas");
+    QIcon icon("://letter_large.png");
+    w.setWindowIcon(icon);
     //w.show();
     return a.exec();
 

@@ -7,6 +7,12 @@
 #include <QHBoxLayout>
 #include "ValidEmailBox.h"
 
+/**
+ * @brief The EmailTextBox class
+ *
+ *  The text box associated with an email.
+ */
+
 class EmailTextBox : public QWidget
 {
     Q_OBJECT

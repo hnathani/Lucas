@@ -49,7 +49,7 @@ bool IMAPConnection::isConnected() {
 
 void IMAPConnection::send(const QString& request) {
     QByteArray data;
-    qDebug() << request;
+    //qDebug() << request;
     data.append(request);
     m_socket.write(data);
 }
@@ -66,7 +66,7 @@ void IMAPConnection::read(const QString& tag, QByteArray& response) {
         }
         response.append(data);
     }
-    qDebug() << response;
+    //qDebug() << response;
 }
 
 IMAPConnection::Status IMAPConnection::getStatus() {

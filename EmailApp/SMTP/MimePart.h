@@ -4,6 +4,12 @@
 #include <QObject>
 #include "mimecontentformatter.h"
 
+/**
+ * @brief The MimePart class
+ *  Mime parts that represent the content and header info
+ *  of emails - adapted from: https://github.com/keelerm84/SupportMessage
+ */
+
 class MimePart : public QObject
 {
     Q_OBJECT

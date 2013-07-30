@@ -2,6 +2,11 @@
 #define MIMEHTML_H
 
 #include "MimeText.h"
+/**
+ * @brief The MimeHtml class
+ *  Created when html email message are sent - adapted from: https://github.com/keelerm84/SupportMessage
+ *
+ */
 
 class MimeHtml : public MimeText
 {

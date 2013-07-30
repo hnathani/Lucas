@@ -5,6 +5,10 @@
 #include <QLabel>
 #include <QPushButton>
 
+/**
+ * @brief The AttachmentOpenDisplay class
+ *  Adds attachment to email user is about to send
+ */
 class AttachmentOpenDisplay : public QWidget
 {
     Q_OBJECT

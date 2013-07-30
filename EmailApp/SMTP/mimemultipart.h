@@ -3,6 +3,13 @@
 
 #include "mimepart.h"
 
+/**
+ * @brief The MimeMultiPart class
+ *  MimeMultiPart objects are created when attachments are
+ *  sent with the email, RFC's listed below for more detail.
+ *
+ *  Adapted from: https://github.com/keelerm84/SupportMessage
+ */
 class MimeMultiPart : public MimePart
 {
     Q_OBJECT

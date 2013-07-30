@@ -70,7 +70,6 @@ void NewMessage::sendEmail ()
     MimeText text;
     text.setText("Hi,\nJust testing out sending emails woohoo.\n");
     message.addPart(&text);
-    qDebug() << message.toString();
 
     MimeAttachment attachment (new QFile(tr("C:\\Users\\Conor\\Documents\\CMPT 212 Project\\Penguins.jpg")));
 

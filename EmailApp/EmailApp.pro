@@ -30,7 +30,6 @@ SOURCES += main.cpp \
     UI/NewMessage.cpp \
     UI/ReplyMessage.cpp \
     UI/ForwardMessage.cpp \
-    UI/TableModel.cpp \
     IMAP/MIMEParser.cpp \
     IMAP/IMAPAttachment.cpp \
     EmailAddress.cpp \
@@ -75,7 +74,6 @@ HEADERS  += \
     UI/NewMessage.h \
     UI/ReplyMessage.h \
     UI/ForwardMessage.h \
-    UI/TableModel.h \
     IMAP/MIMEParser.h \
     IMAP/IMAPAttachment.h \
     EmailAddress.h \
@@ -115,4 +113,6 @@ RESOURCES += \
     trash2icon.qrc \
     mailflaticon.qrc \
     folderflaticon.qrc \
-    trashflaticon.qrc
+    trashflaticon.qrc \
+    appicon.qrc \
+    appiconlarge.qrc

@@ -4,6 +4,11 @@
 #include "MimePart.h"
 #include <QFile>
 
+/**
+ * @brief The MimeFile class
+ *  Adapted from: https://github.com/keelerm84/SupportMessage
+ */
+
 class MimeFile : public MimePart
 {
     Q_OBJECT

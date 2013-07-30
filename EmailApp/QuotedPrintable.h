@@ -4,6 +4,14 @@
 #include <QObject>
 #include <QByteArray>
 
+/**
+ * @brief The QuotedPrintable class
+ *  Encodes 8-bit ASCII data fit for a 7-bit path, so that
+ *  it's suitable for MIME objects.
+ *
+ *  Adapted from: https://github.com/keelerm84/SupportMessage
+ */
+
 class QuotedPrintable : public QObject
 {
     Q_OBJECT

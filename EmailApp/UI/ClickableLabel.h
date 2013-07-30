@@ -2,6 +2,10 @@
 #define CLICKABLELABEL_H
 
 #include <QLabel>
+/**
+ * @brief The ClickableLabel class
+ *  Subclass of QLabel that allows it to be clicked using a mousePressEvent.
+ */
 
 class ClickableLabel : public QLabel
 {

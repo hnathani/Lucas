@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>letter_large.png</file>
+    </qresource>
+</RCC>

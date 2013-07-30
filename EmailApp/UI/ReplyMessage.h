@@ -1,6 +1,12 @@
 #ifndef REPLYMESSAGE_H
 #define REPLYMESSAGE_H
 #include "NewMessage.h"
+
+/**
+ * @brief The ReplyMessage class
+ *  Subclass of NewMessage that allows us to append
+ *  a reply string to the subject.
+ */
 class ReplyMessage : public NewMessage
 {
     Q_OBJECT

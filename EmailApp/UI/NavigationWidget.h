@@ -6,6 +6,12 @@
 #include <QLineEdit>
 #include <QLabel>
 
+/**
+ * @brief The NavigationWidget class
+ *  Subclassed QFrame that holds the next and previous buttons
+ *  to navigate through the paging of email items.
+ */
+
 class NavigationWidget : public QFrame
 {
     Q_OBJECT

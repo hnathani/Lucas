@@ -4,7 +4,11 @@
 #include <QString>
 #include "EmailProviders.h"
 
-// Represent's a user's email settings
+
+/**
+ * @brief The User class
+ *  Represent's a user's email settings.
+ */
 class User {
 public:
     User() {};

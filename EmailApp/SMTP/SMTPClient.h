@@ -6,6 +6,11 @@
 
 #include "MimeMessage.h"
 
+/**
+ * @brief The SmtpClient class
+ *  Handles smtp connections - adapted from: https://github.com/keelerm84/SupportMessage
+ */
+
 
 class SmtpClient : public QObject
 {

@@ -5,6 +5,12 @@
 #include <QTextEdit>
 #include "IMAP/IMAPEmail.h"
 
+/**
+ * @brief The EmailViewWidget class
+ *  Subclassed QFrame that holds the content of a received email
+ *  when pressed.
+ */
+
 class EmailViewWidget : public QFrame {
 
 Q_OBJECT

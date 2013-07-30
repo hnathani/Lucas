@@ -4,6 +4,10 @@
 #include <QDialog>
 #include "EmailReplyWidget.h"
 #include "User.h"
+/**
+ * @brief The ComposeWindow class
+ *  Window created when user clicks the compose email button
+ */
 
 class ComposeWindow : public QDialog
 {

@@ -5,6 +5,12 @@
 #include "EmailTableItem.h"
 #include "IMAP/IMAPFolder.h"
 
+/**
+ * @brief The EmailTableWidget class
+ *
+ *  Custom QTableWidget that holds EmailTableItems (IMAPEmails)
+ *  as it's "items".
+ */
 class EmailTableWidget : public QTableWidget {
 
 Q_OBJECT

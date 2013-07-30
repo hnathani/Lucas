@@ -4,6 +4,10 @@
 #include <QFrame>
 #include <QPushButton>
 #include <QLabel>
+/**
+ * @brief The ValidEmailBox class
+ * UI that checks for valid email
+ */
 
 class ValidEmailBox : public QFrame
 {
