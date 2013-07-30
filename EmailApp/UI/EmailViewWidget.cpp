@@ -16,7 +16,6 @@ void EmailViewWidget::displayEmail(IMAPEmail* email) {
     file.open(QFile::ReadWrite);
     QByteArray data;
     QString content = email->getHTML();
-    qDebug() << content;
     if (content.isEmpty()) {
         content = email->getContent();
         m_textView->setText(content);

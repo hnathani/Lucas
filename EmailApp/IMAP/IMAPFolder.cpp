@@ -48,11 +48,13 @@ QList<IMAPEmail*> IMAPFolder::getEmails(int start, int end) {
     m_connection->read(tag, response);
     QList<IMAPEmail*> emails = m_parser.parseEmails(response, *m_connection, this);
 
-    tag = IMAPTag::getNextTag();
-    command = QString("%1 FETCH %2:%3 BODYSTRUCTURE\r\n").arg(tag, QString::number(start), QString::number(end));
-    m_connection->send(command);
-    m_connection->read(tag, response);
-    m_parser.parseBodyStructure(response, emails);
+    if (emails.size() > 0) {
+        tag = IMAPTag::getNextTag();
+        command = QString("%1 FETCH %2:%3 BODYSTRUCTURE\r\n").arg(tag, QString::number(start), QString::number(end));
+        m_connection->send(command);
+        m_connection->read(tag, response);
+        m_parser.parseBodyStructure(response, emails);
+    }
 
     qSort(emails.begin(), emails.end(), IMAPEmail::compareGreaterThan);
     return emails;
@@ -135,7 +137,14 @@ QList<IMAPEmail*> IMAPFolder::searchCommand(QString term, int start, int end) {
         m_connection->send(command);
         m_connection->read(tag, response);
         emails = m_parser.parseEmails(response, *m_connection, this);
+
+        tag = IMAPTag::getNextTag();
+        command = QString("%1 FETCH %2:%3 BODYSTRUCTURE\r\n").arg(tag, QString::number(start), QString::number(end));
+        m_connection->send(command);
+        m_connection->read(tag, response);
+        m_parser.parseBodyStructure(response, emails);
     }
+
     qSort(emails.begin(), emails.end(), IMAPEmail::compareGreaterThan);
     return emails;
 }
