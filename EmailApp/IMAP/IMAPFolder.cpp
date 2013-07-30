@@ -119,11 +119,11 @@ QList<IMAPEmail*> IMAPFolder::searchCommand(QString term, int start, int end) {
     int initialStart = start;
     start = count - (end - initialStart) - initialStart + 1;
     end = count - initialStart;
-    for (int i = 0; (i < start) && i < emailIDList.size(); i++) {
+    for (int i = 0; (i < (start - 1)) && i < emailIDList.size(); i++) {
         emailIDList.removeAt(i);
     }
 
-    while(emailIDList.size() > (end - start)) {
+    while(emailIDList.size() > ( (end + 1) - start)) {
         emailIDList.pop_back();
     }
     QList<IMAPEmail*> emails;

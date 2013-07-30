@@ -3,7 +3,7 @@
 #include <QGridLayout>
 #include "EmailAddress.h"
 EmailHeaderWidget::EmailHeaderWidget(QWidget *parent) :
-    QWidget(parent)
+    QFrame(parent)
 {
     createUI();
     setConnections();

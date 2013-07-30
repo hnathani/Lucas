@@ -6,7 +6,7 @@
 #include <QLineEdit>
 #include <QLabel>
 
-class NavigationWidget : public QWidget
+class NavigationWidget : public QFrame
 {
     Q_OBJECT
 public:
@@ -16,16 +16,18 @@ signals:
      void nextClicked();
      void prevClicked();
      void searchClicked(QString query);
+     void composeClicked();
 public slots:
      void emailsSelected(int start, int end, int total);
-     void onSearchClick();
+     void onSearchEnterPressed();
+     void onComposeClick();
 
 private:
+    QPushButton* m_composeButton;
     QPushButton* m_prevEmailPage;
     QPushButton* m_nextEmailPage;
     QLabel* m_pageLabel;
     QLineEdit* m_searchBar;
-    QPushButton* m_submitSearch;
     void createUI();
 
     

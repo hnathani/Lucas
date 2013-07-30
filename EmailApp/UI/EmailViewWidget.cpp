@@ -4,7 +4,7 @@
 #include <QDir>
 #include <QVBoxLayout>
 
-EmailViewWidget::EmailViewWidget(QWidget* parent) : QWidget(parent) {
+EmailViewWidget::EmailViewWidget(QWidget* parent) : QFrame(parent) {
     createUI();
     initializeSettings();
 }
@@ -16,7 +16,6 @@ void EmailViewWidget::displayEmail(IMAPEmail* email) {
     file.open(QFile::ReadWrite);
     QByteArray data;
     QString content = email->getHTML();
-    qDebug() << "HTML TEST";
     qDebug() << content;
     if (content.isEmpty()) {
         content = email->getContent();
@@ -59,6 +58,8 @@ void EmailViewWidget::clearAndHide() {
 void EmailViewWidget::createUI() {
     QVBoxLayout* mainLayout = new QVBoxLayout();
     setLayout(mainLayout);
+    mainLayout->setSpacing(0);
+    mainLayout->setMargin(0);
 
     m_webView = new QWebView(this);
     m_textView = new QTextEdit(this);

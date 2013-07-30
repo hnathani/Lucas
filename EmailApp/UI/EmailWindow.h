@@ -29,7 +29,6 @@ private:
     EmailHeaderWidget* m_emailHeaderWidget;
     EmailReplyWidget* m_emailReplyWidget;
     ComposeWindow* m_composeWindow;
-    QPushButton* m_composeButton;
     LoginWindow* m_loginWindow;
 
     void createUI();

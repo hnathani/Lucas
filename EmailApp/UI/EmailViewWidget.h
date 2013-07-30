@@ -5,7 +5,7 @@
 #include <QTextEdit>
 #include "IMAP/IMAPEmail.h"
 
-class EmailViewWidget : public QWidget {
+class EmailViewWidget : public QFrame {
 
 Q_OBJECT
 

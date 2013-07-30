@@ -13,6 +13,9 @@ void EmailWindow::createUI() {
     setCentralWidget(m_centralWidget);
 
     QHBoxLayout* mainLayout = new QHBoxLayout(m_centralWidget);
+    mainLayout->setSpacing(0);
+    mainLayout->setMargin(0);
+
     m_centralWidget->setLayout(mainLayout);
 
     m_folderTreeWidget = new FolderTreeWidget(m_centralWidget);
@@ -20,12 +23,6 @@ void EmailWindow::createUI() {
 
     QVBoxLayout* emailLayout = new QVBoxLayout();
     mainLayout->addLayout(emailLayout, 6);
-
-    QHBoxLayout* composeLayout = new QHBoxLayout();
-    emailLayout->addLayout(composeLayout, 1);
-    m_composeButton = new QPushButton("Compose", m_centralWidget);
-    composeLayout->addWidget(m_composeButton, 1);
-    composeLayout->addStretch(10);
 
     m_navigationWidget = new NavigationWidget(m_centralWidget);
     emailLayout->addWidget(m_navigationWidget, 1);
@@ -48,9 +45,6 @@ void EmailWindow::createUI() {
     m_loginWindow = new LoginWindow(&m_client, this);
 
     setupConnections();
-
-    //this->showMaximized();
-
     m_loginWindow->show();
 }
 
@@ -72,7 +66,7 @@ void EmailWindow::setupConnections() {
     connect(m_emailHeaderWidget, SIGNAL(forwardClicked(IMAPEmail*)), m_emailReplyWidget, SLOT(forward(IMAPEmail*)));
     connect(m_emailHeaderWidget, SIGNAL(deleteClicked(IMAPEmail*)), m_emailReplyWidget, SLOT(reset()));
     connect(m_emailHeaderWidget, SIGNAL(deleteClicked(IMAPEmail*)), m_emailTableWidget, SLOT(reload()));
-    connect(m_composeButton, SIGNAL(clicked()), m_composeWindow, SLOT(display()));
+    connect(m_navigationWidget, SIGNAL(composeClicked()), m_composeWindow, SLOT(display()));
 
     connect(m_loginWindow, SIGNAL(loginSuccessful()), SLOT(userLoggedIn()));
 }

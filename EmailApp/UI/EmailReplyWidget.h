@@ -16,7 +16,7 @@ enum SendType {
     REPLY
 };
 
-class EmailReplyWidget : public QWidget
+class EmailReplyWidget : public QFrame
 {
     Q_OBJECT
 public:
@@ -42,6 +42,7 @@ public slots:
 private:
     QTextEdit* m_replyBox;
     QLineEdit* m_subject;
+    QLabel* m_subjectLabel;
     EmailTextBox* m_to;
     EmailTextBox* m_cc;
     EmailTextBox* m_bcc;

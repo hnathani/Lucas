@@ -4,11 +4,12 @@
 #include "SMTP/SmtpMime"
 
 EmailReplyWidget::EmailReplyWidget(QWidget *parent) :
-    QWidget(parent)
+    QFrame(parent)
 {
     createUI();
     setConnections();
     reset();
+    setObjectName("HELLO");
 }
 
 void EmailReplyWidget::createUI() {
@@ -26,9 +27,9 @@ void EmailReplyWidget::createUI() {
     subjectLayout->addLayout(subjectLeft, 1);
     subjectLayout->addLayout(subjectRight, 10);
 
-    QLabel* subjectLabel = new QLabel("Subject", this);
+    m_subjectLabel = new QLabel("Subject", this);
     m_subject = new QLineEdit(this);
-    subjectLeft->addWidget(subjectLabel);
+    subjectLeft->addWidget(m_subjectLabel);
     subjectRight->addWidget(m_subject);
 
     QHBoxLayout* top = new QHBoxLayout();
@@ -135,6 +136,7 @@ void EmailReplyWidget::compose() {
     m_currentEmail = NULL;
     m_currentMode = COMPOSE;
     m_subject->show();
+    m_subjectLabel->show();
     show();
 }
 
@@ -151,7 +153,7 @@ void EmailReplyWidget::reset() {
         delete attachment;
     }
     m_attachments.clear();
-
+    m_subjectLabel->hide();
     m_subject->hide();
     m_bcc->hide();
     m_cc->hide();

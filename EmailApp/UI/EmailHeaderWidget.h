@@ -8,7 +8,7 @@
 #include "AttachmentEnclosedDisplay.h"
 #include <QHBoxLayout>
 
-class EmailHeaderWidget : public QWidget
+class EmailHeaderWidget : public QFrame
 {
     Q_OBJECT
 public:

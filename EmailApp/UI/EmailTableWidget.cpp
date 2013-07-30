@@ -22,10 +22,13 @@ void EmailTableWidget::folderSelect(IMAPFolder* folder) {
 
 void EmailTableWidget::initializeSettings() {
     setSelectionBehavior(QAbstractItemView::SelectRows);
-    setSelectionMode(QAbstractItemView::SingleSelection);
+    setSelectionMode(QAbstractItemView::ContiguousSelection);
     setColumnCount(3);
     verticalHeader()->hide();
     horizontalHeader()->resizeSections(QHeaderView::Interactive);
+    setShowGrid(false);
+    setFocusPolicy(Qt::NoFocus);
+    setAlternatingRowColors(true);
 }
 
 void EmailTableWidget::createLabels() {
