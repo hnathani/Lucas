@@ -14,7 +14,7 @@ class IMAPFolder;
 // Represents an email on an IMAP server
 class IMAPEmail {
 public:
-    IMAPEmail(QString id, QString from, QString subject, QDateTime date, IMAPConnection* connection);
+    IMAPEmail(QString id, QString ct, QString from, QString subject, QDateTime date, IMAPConnection* connection);
     virtual ~IMAPEmail();
     virtual EmailAddress getTo(); // Returns the recipient
     virtual EmailAddress getFrom(); // Returns the sender
@@ -35,6 +35,7 @@ public:
     virtual void deleteEmail(); // Moves the email to the trash
     virtual void setParent(IMAPFolder* parent); // Sets the email's folder
     static bool compareGreaterThan(IMAPEmail* email1, IMAPEmail* email2); // Compares the email by date
+    bool hasAttachments();
 
 private:
     QString m_id;
@@ -42,6 +43,7 @@ private:
     EmailAddress m_to;
     EmailAddress m_from;
     QString m_subject;
+    QString m_contenttype;
     QDateTime m_date;
     QList<EmailAddress> m_cc;
     QList<EmailAddress> m_bcc;

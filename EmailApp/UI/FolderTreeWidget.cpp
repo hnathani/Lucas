@@ -28,9 +28,14 @@ void FolderTreeWidget::addFolderChildren(FolderTreeItem* parent, QList<IMAPFolde
         } else {
             parent->addChild(item);
         }
-        if(item->getName().compare("Trash") == 0)
+        if(item->getName().compare("Trash") == 0 || item->getName().compare("[Gmail]/Trash") == 0)
         {
-            QIcon icon("://trash.png");
+            QIcon icon("://trash_32.png");
+            item->setIcon(0, icon);
+        }
+        else
+        {
+            QIcon icon("://folder_sans_32.png");
             item->setIcon(0, icon);
         }
         if (folders[i]->hasChildren()) {

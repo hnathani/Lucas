@@ -92,6 +92,11 @@ void EmailTableWidget::setEmails(QList<IMAPEmail*> emails, int total) {
         item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
         item->setText(emails[i]->getDate().toString());
         this->setItem(i, 2, item);
+        if(emails[i]->hasAttachments())
+        {
+            QIcon icon("://attachment_32.png");
+            item->setIcon(icon);
+        }
     }
     horizontalHeader()->resizeSections(QHeaderView::ResizeToContents);
     horizontalHeader()->setStretchLastSection(true);

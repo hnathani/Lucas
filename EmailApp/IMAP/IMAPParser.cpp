@@ -60,14 +60,19 @@ QList<IMAPEmail*> IMAPParser::parseEmails(QString data, IMAPConnection& connecti
 }
 
 IMAPEmail* IMAPParser::parseEmail(QString data, IMAPConnection& connection, IMAPFolder* folder) {
-    QStringList lines = data.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
-    QString id, subject, from;
+    QStringList lines = data.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);    
+    QString id, subject, from, ct;
     QDateTime dt;
     id = data.split(QRegExp("[^0-9]"))[0];
     bool old = false;
     for (int i = 0; i < lines.size(); i++) {
+        //qDebug() << "data received: " + lines[i];
         if (lines[i].contains("\\Seen", Qt::CaseInsensitive)) {
             old = true;
+        }
+        if(lines[i].contains("content-type:", Qt::CaseInsensitive)){
+            ct = lines[i].split(QRegExp("[:]"), QString::SkipEmptyParts)[1];
+            //qDebug() << "content type here: " + ct;
         }
         if (lines[i].contains("subject:", Qt::CaseInsensitive)) {
             subject = lines[i].split(QRegExp("[:]"), QString::SkipEmptyParts)[1];
@@ -81,7 +86,7 @@ IMAPEmail* IMAPParser::parseEmail(QString data, IMAPConnection& connection, IMAP
             dt = QDateTime::fromString(datestr, "ddd, dd MMM yyyy HH:mm:ss");
         }
     }
-    IMAPEmail *email = new IMAPEmail(id, from, subject, dt, &connection);
+    IMAPEmail *email = new IMAPEmail(id, ct, from, subject, dt, &connection);
     email->setParent(folder);
     if (old) {
         email->setRead(true);

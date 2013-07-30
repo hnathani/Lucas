@@ -108,4 +108,11 @@ OTHER_FILES += \
 
 RESOURCES += \
     attachmenticon.qrc \
-    trashicon.qrc
+    trashicon.qrc \
+    mailicon.qrc \
+    foldericon.qrc \
+    folderclosedicon.qrc \
+    trash2icon.qrc \
+    mailflaticon.qrc \
+    folderflaticon.qrc \
+    trashflaticon.qrc
