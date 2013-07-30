@@ -3,12 +3,14 @@
 #include <QDate>
 #include <QtAlgorithms>
 #include "IMAPEmail.h"
+#include "IMAPClient.h"
 
-IMAPFolder::IMAPFolder(QString name, IMAPConnection* con) {
+IMAPFolder::IMAPFolder(QString name, IMAPConnection* con, IMAPClient* client) {
     m_name = name;
     m_connection = con;
     m_hasChildren = false;
     m_unread = 0;
+    m_client = client;
 }
 
 QString IMAPFolder::getName() {
@@ -45,6 +47,13 @@ QList<IMAPEmail*> IMAPFolder::getEmails(int start, int end) {
     QByteArray response;
     m_connection->read(tag, response);
     QList<IMAPEmail*> emails = m_parser.parseEmails(response, *m_connection, this);
+
+    tag = IMAPTag::getNextTag();
+    command = QString("%1 FETCH %2:%3 BODYSTRUCTURE\r\n").arg(tag, QString::number(start), QString::number(end));
+    m_connection->send(command);
+    m_connection->read(tag, response);
+    m_parser.parseBodyStructure(response, emails);
+
     qSort(emails.begin(), emails.end(), IMAPEmail::compareGreaterThan);
     return emails;
 }
@@ -63,7 +72,6 @@ QList<IMAPEmail*> IMAPFolder::search(QString query, int start, int end) {
 }
 
 int IMAPFolder::searchCount(QString query) {
-    selectFolder();
     QString tag = IMAPTag::getNextTag();
     QString command = QString("%1 SEARCH CHARSET utf-8 BODY \"%2\"\r\n").arg(tag, query);
     m_connection->send(command);
@@ -80,12 +88,6 @@ int IMAPFolder::selectFolder() {
     QByteArray response;
     m_connection->read(tag, response);
     int emailCount = m_parser.parseSelect(response);
-
-    tag = IMAPTag::getNextTag();
-    command = QString("%1 SEARCH UNSEEN\r\n").arg(tag);
-    m_connection->send(command);
-    m_connection->read(tag, response);
-    m_unread = m_parser.parseSearch(response).size();
     return emailCount;
 }
 
@@ -104,7 +106,6 @@ void IMAPFolder::incrementUnread() {
 }
 
 QList<IMAPEmail*> IMAPFolder::searchCommand(QString term, int start, int end) {
-    selectFolder();
     QString tag = IMAPTag::getNextTag();
     QString command = QString("%1 SEARCH %2\r\n").arg(tag, term);
     m_connection->send(command);

@@ -167,6 +167,9 @@ void EmailReplyWidget::addAttachment() {
     QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"),"", tr("Files (*.*)"));
     QFileInfo fileInfo(filePath);
     QString fileName  = fileInfo.fileName();
+    if (fileName.isEmpty()) {
+        return;
+    }
     AttachmentOpenDisplay* attachment = new AttachmentOpenDisplay(filePath, fileName, this);
     m_attachments.push_back(attachment);
     m_attachmentLayout->addWidget(attachment, 0, Qt::AlignLeft);

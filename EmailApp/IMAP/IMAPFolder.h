@@ -5,6 +5,7 @@
 #include "IMAPConnection.h"
 #include "IMAPParser.h"
 
+class IMAPClient;
 class IMAPEmail;
 
 // Represents a folder on an IMAP Server
@@ -13,7 +14,7 @@ class IMAPFolder : public QObject {
 Q_OBJECT
 
 public:
-    IMAPFolder(QString name, IMAPConnection* con);
+    IMAPFolder(QString name, IMAPConnection* con, IMAPClient* client);
     virtual QString getName();
     virtual QList<IMAPFolder*> getChildren(); // Returns the folder children
     virtual void setChildren(QList<IMAPFolder*> children); // Sets the child folders
@@ -32,6 +33,7 @@ public:
 private:
     QString m_name;
     IMAPConnection* m_connection;
+    IMAPClient* m_client;
     QList<IMAPFolder*> m_children;
     bool m_hasChildren;
     IMAPParser m_parser;

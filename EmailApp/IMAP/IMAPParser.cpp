@@ -7,10 +7,11 @@
 #include "IMAPFolder.h"
 #include "IMAPEmail.h"
 
+
 IMAPParser::IMAPParser() {
 }
 
-QList<IMAPFolder*> IMAPParser::parseFolders(QString data, IMAPConnection& connection) {
+QList<IMAPFolder*> IMAPParser::parseFolders(QString data, IMAPConnection& connection, IMAPClient* client) {
     QList<IMAPFolder*> folders;
     QString pattern = "\\* LIST \\(.*\\) \".*\" \"(.*)\"";
     QRegExp re(pattern);
@@ -20,7 +21,7 @@ QList<IMAPFolder*> IMAPParser::parseFolders(QString data, IMAPConnection& connec
         if (re.indexIn(lines[i]) != -1) {
             qDebug() << re.cap(1);
             QString folderName = re.cap(1);
-            IMAPFolder* folder = new IMAPFolder(folderName, &connection);
+            IMAPFolder* folder = new IMAPFolder(folderName, &connection, client);
 
             if (lines[i].contains("HasChildren")) {
                 folder->setHasChildren(true);
@@ -53,7 +54,7 @@ QList<IMAPEmail*> IMAPParser::parseEmails(QString data, IMAPConnection& connecti
 
     int pos = 0;
     while ((pos = re.indexIn(data, pos)) != -1 ) {
-        headers.push_front(parseEmail(re.cap(1), connection, folder));
+        headers.push_back(parseEmail(re.cap(1), connection, folder));
         pos += re.matchedLength();
     }
     return headers;
@@ -212,4 +213,15 @@ bool IMAPParser::successfulConnect(QString tag, QString data) {
         }
     }
     return false;
+}
+
+void IMAPParser::parseBodyStructure(QString data, QList<IMAPEmail*> emails) {
+    QStringList emailStructures = data.split("*", QString::SkipEmptyParts);
+    for (int i = 0; i < emailStructures.size(); i++) {
+        if (emailStructures[i].contains("attachment", Qt::CaseInsensitive)) {
+            emails[i]->setHasAttachments(true);
+        } else {
+            emails[i]->setHasAttachments(false);
+        }
+    }
 }

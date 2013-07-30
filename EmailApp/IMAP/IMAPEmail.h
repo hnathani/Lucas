@@ -36,6 +36,7 @@ public:
     virtual void setParent(IMAPFolder* parent); // Sets the email's folder
     static bool compareGreaterThan(IMAPEmail* email1, IMAPEmail* email2); // Compares the email by date
     bool hasAttachments();
+    void setHasAttachments(bool value);
 
 private:
     QString m_id;
@@ -57,6 +58,7 @@ private:
     bool m_haveEmail;
     QString m_contentType;
     QString m_contentEncoding;
+    bool m_hasAttachments;
 
     void loadHeaderValues();
     void loadEmail();
