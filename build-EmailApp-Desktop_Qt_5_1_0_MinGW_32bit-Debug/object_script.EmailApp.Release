@@ -46,6 +46,10 @@ INPUT(
 ./release\qrc_mailicon.o
 ./release\qrc_foldericon.o
 ./release\qrc_folderclosedicon.o
+./release\qrc_trash2icon.o
+./release\qrc_mailflaticon.o
+./release\qrc_folderflaticon.o
+./release\qrc_trashflaticon.o
 ./release\moc_SMTPClient.o
 ./release\moc_IMAPFolder.o
 ./release\moc_MimePart.o

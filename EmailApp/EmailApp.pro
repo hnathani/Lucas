@@ -111,4 +111,8 @@ RESOURCES += \
     trashicon.qrc \
     mailicon.qrc \
     foldericon.qrc \
-    folderclosedicon.qrc
+    folderclosedicon.qrc \
+    trash2icon.qrc \
+    mailflaticon.qrc \
+    folderflaticon.qrc \
+    trashflaticon.qrc
