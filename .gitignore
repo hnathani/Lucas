@@ -1,0 +1,22 @@
+.DS_Store	
+.obj	
+*.moc
+
+# Generated MOC, resource and UI files
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+
+*.exe
+*.dll
+*.o
+*.out
+
+*~
+
+Debug/
+Release/
+*build-desktop-Qt*
+
+*.pro.user
